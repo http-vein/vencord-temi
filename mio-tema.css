@@ -1,0 +1,349 @@
+
+
+/* -------------------------------------------------------------------------------------------------------------- */
+
+/**
+ * THEMA
+ * @name midnight (tokyo night)
+ * @version 2.1.1
+ * @website https://github.com/refact0r/midnight-discord
+ * @source https://github.com/refact0r/midnight-discord/blob/master/themes/flavors/midnight-tokyo-night.theme.css
+*/
+
+/* import theme modules */
+@import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
+
+body {
+    /* font, change to '' for default discord font */
+    --font: 'figtree'; /* change to '' for default discord font */
+    --code-font: ''; /* change to '' for default discord font */
+    font-weight: 400 /* normal text font weight. DOES NOT AFFECT BOLD TEXT */;
+
+    /* sizes */
+    --gap: 12px; /* spacing between panels */
+    --divider-thickness: 4px; /* thickness of unread messages divider and highlighted message borders */
+    --border-thickness: 1px; /* thickness of borders around main panels. DOES NOT AFFECT OTHER BORDERS */
+
+    /* animation/transition options */
+    --animations: on; /* off: disable animations/transitions, on: enable animations/transitions */
+    --list-item-transition: 0.2s ease; /* transition for list items */
+    --dms-icon-svg-transition: 0.4s ease; /* transition for the dms icon */
+    --border-hover-transition: 0.2s ease; /* transition for borders when hovered */
+
+    /* top bar options */
+    --top-bar-height: var(--gap); /* height of the top bar (discord default is 36px, old discord style is 24px, var(--gap) recommended if button position is set to titlebar) */
+    --top-bar-button-position: titlebar; /* off: default position, hide: hide buttons completely, serverlist: move inbox button to server list, titlebar: move inbox button to channel titlebar (will hide title) */
+    --top-bar-title-position: off; /* off: default centered position, hide: hide title completely, left: left align title (like old discord) */
+    --subtle-top-bar-title: off; /* off: default, on: hide the icon and use subtle text color (like old discord) */
+
+    /* window controls */
+    --custom-window-controls: off; /* off: default window controls, on: custom window controls */
+    --window-control-size: 14px; /* size of custom window controls */
+
+    /* dms button options */
+    --custom-dms-icon: custom; /* off: use default discord icon, hide: remove icon entirely, custom: use custom icon */
+    --dms-icon-svg-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 27' width='24' height='24'%3E%3Cpath fill='currentColor' d='M0 0h7v1H6v1H5v1H4v1H3v1H2v1h5v1H0V6h1V5h1V4h1V3h1V2h1V1H0m13 2h5v1h-1v1h-1v1h-1v1h3v1h-5V7h1V6h1V5h1V4h-3m8 5h1v5h1v-1h1v1h-1v1h1v-1h1v1h-1v3h-1v1h-2v1h-1v1h1v-1h2v-1h1v2h-1v1h-2v1h-1v-1h-1v1h-6v-1h-1v-1h-1v-2h1v1h2v1h3v1h1v-1h-1v-1h-3v-1h-4v-4h1v-2h1v-1h1v-1h1v2h1v1h1v-1h1v1h-1v1h2v-2h1v-2h1v-1h1M8 14h2v1H9v4h1v2h1v1h1v1h1v1h4v1h-6v-1H5v-1H4v-5h1v-1h1v-2h2m17 3h1v3h-1v1h-1v1h-1v2h-2v-2h2v-1h1v-1h1m1 0h1v3h-1v1h-2v-1h1v-1h1'%3E%3C/path%3E%3C/svg%3E"); /* icon svg url. MUST BE A SVG. */
+    --dms-icon-svg-size: 90%; /* size of the svg (css mask-size property) */
+    --dms-icon-color-before: var(--icon-subtle); /* normal icon color */
+    --dms-icon-color-after: var(--white); /* icon color when button is hovered/selected */
+    --custom-dms-background: off; /* off to disable, image to use a background image (must set url variable below), color to use a custom color/gradient */
+    --dms-background-image-url: url(''); /* url of the background image */
+    --dms-background-image-size: cover; /* size of the background image (css background-size property) */
+    --dms-background-color: linear-gradient(70deg, var(--blue-2), var(--purple-2), var(--red-2)); /* fixed color/gradient (css background property) */
+
+    /* background image options */
+    --background-image: off; /* off: no background image, on: enable background image (must set url variable below) */
+    --background-image-url: url(''); /* url of the background image */
+
+    /* transparency/blur options */
+    /* NOTE: TO USE TRANSPARENCY/BLUR, YOU MUST HAVE TRANSPARENT BG COLORS. FOR EXAMPLE: --bg-4: hsla(220, 15%, 10%, 0.7); */
+    --transparency-tweaks: off; /* off: no changes, on: remove some elements for better transparency */
+    --remove-bg-layer: off; /* off: no changes, on: remove the base --bg-3 layer for use with window transparency (WILL OVERRIDE BACKGROUND IMAGE) */
+    --panel-blur: off; /* off: no changes, on: blur the background of panels */
+    --blur-amount: 12px; /* amount of blur */
+    --bg-floating: var(--bg-3); /* set this to a more opaque color if floating panels look too transparent. only applies if panel blur is on  */
+
+    /* chatbar options */
+    --custom-chatbar: off; /* off: default chatbar, separated: chatbar separated from chat */
+    --chatbar-height: 47px; /* height of the chatbar (56px by default, 47px to align with user panel, 56px recommended for separated) */
+
+    /* other options */
+    --small-user-panel: on; /* off: default user panel, on: smaller user panel like in old discord */
+}
+
+
+/* color options */
+:root {
+    --colors: off; /* off: discord default colors, on: midnight custom colors */
+
+    /* text colors */
+    --text-0: var(--bg-3); /* text on colored elements */
+    --text-1: hsl(229, 73%, 95%); /* other normally white text */
+    --text-2: #c0caf5; /* headings and important text */
+    --text-3: #a9b1d6; /* normal text */
+    --text-4: hsl(229, 21%, 54%); /* icon buttons and channels */
+    --text-5: #414868; /* muted channels/chats and timestamps */
+
+    /* background and dark colors */
+    --bg-1: hsl(230, 22%, 25%); /* dark buttons when clicked */
+    --bg-2: hsl(230, 21%, 19%); /* dark buttons */
+    --bg-3: #16161d; /* spacing, secondary elements */
+    --bg-4: #1a1b26; /* main background color */
+    --hover: hsla(225, 22%, 41%, 0.125); /* channels and buttons when hovered */
+    --active: hsla(225, 22%, 41%, 0.267); /* channels and buttons when clicked or selected */
+    --active-2: hsla(225, 22%, 41%, 0.333); /* extra state for transparent buttons */
+    --message-hover: hsla(225, 0%, 0%, 0.1); /* messages when hovered */
+
+    /* accent colors */
+    --accent-1: var(--blue-1); /* links and other accent text */
+    --accent-2: var(--blue-2); /* small accent elements */
+    --accent-3: var(--blue-3); /* accent buttons */
+    --accent-4: var(--blue-4); /* accent buttons when hovered */
+    --accent-5: var(--blue-5); /* accent buttons when clicked */
+    --accent-new: var(--accent-2); /* stuff that's normally red like mute/deafen buttons */
+    --mention: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 90%) 40%, transparent); /* background of messages that mention you */
+    --mention-hover: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 95%) 40%, transparent); /* background of messages that mention you when hovered */
+    --reply: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 90%) 40%, transparent); /* background of messages that reply to you */
+    --reply-hover: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 95%) 40%, transparent); /* background of messages that reply to you when hovered */
+
+    /* status indicator colors */
+    --online: var(--green-2); /* change to #43a25a for default */
+    --dnd: var(--red-2); /* change to #d83a42 for default */
+    --idle: var(--yellow-2); /* change to #ca9654 for default */
+    --streaming: var(--purple-2); /* change to #593695 for default */
+    --offline: var(--text-4); /* change to #83838b for default offline color */
+
+    /* border colors */
+    --border-light: hsl(225, 0%, 0%, 0.2); /* general light border color */
+    --border: hsl(225, 0%, 0%, 0.3); /* general normal border color */
+    --border-hover: hsl(225, 0%, 0%, 0.3); /* border color of panels when hovered */
+    --button-border: hsl(225, 0%, 0%, 0); /* neutral border color of buttons */
+
+    /* base colors */
+    --red-1: hsl(349, 99%, 78%);
+    --red-2: hsl(349, 89%, 72%);
+    --red-3: hsl(349, 79%, 66%);
+    --red-4: hsl(349, 69%, 60%);
+    --red-5: hsl(349, 59%, 54%);
+
+    --green-1: hsl(89, 56%, 67%);
+    --green-2: hsl(89, 51%, 61%);
+    --green-3: hsl(89, 46%, 56%);
+    --green-4: hsl(89, 41%, 51%);
+    --green-5: hsl(89, 36%, 46%);
+
+    --blue-1: hsl(221, 99%, 78%);
+    --blue-2: hsl(221, 89%, 72%);
+    --blue-3: hsl(221, 79%, 66%);
+    --blue-4: hsl(221, 69%, 60%);
+    --blue-5: hsl(221, 59%, 54%);
+
+    --yellow-1: hsl(36, 71%, 72%);
+    --yellow-2: hsl(36, 66%, 64%);
+    --yellow-3: hsl(36, 61%, 59%);
+    --yellow-4: hsl(36, 56%, 54%);
+    --yellow-5: hsl(36, 51%, 49%);
+
+    --purple-1: hsl(261, 95%, 85%);
+    --purple-2: hsl(261, 85%, 79%);
+    --purple-3: hsl(261, 75%, 73%);
+    --purple-4: hsl(261, 65%, 67%);
+    --purple-5: hsl(261, 55%, 61%);
+}
+
+.divider__908e2:not(.isUnread__908e2) {
+    border-color: var(--bg-2);
+}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+
+/*    custom chat bar input text    */
+/* default prompt */
+:root{
+    --prompt-text: "be silly :3";
+}
+
+/* prompt in channels you dont have permission to talk in */
+[class*=channelTextAreaDisabled] {
+    --prompt-text: "no silly :c";
+}
+
+/* prompt in profile popouts */
+[class*=textAreaForUserProfile] {
+    --prompt-text: "perchance a bit of silliness :P";
+    opacity: 50%;
+}
+
+/* hide existing text */
+[class*=placeholder][class*=slateTextArea] {visibility: hidden;}
+
+/* add custom text */
+[class*=placeholder][class*=slateTextArea]::before {visibility: visible;content: var(--prompt-text); /*dont break your quotes :3*/}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+
+/*    OLD INVITE    */
+.guildInviteContainer__083ae {
+  width: 400px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: end;
+  justify-content: space-between;
+  padding: 8px;
+  gap: 8px;
+  height: calc(48px + 72px);
+
+  .cardHeightMeasure__083ae {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 8px;
+    flex: 1 1 auto!important;
+  min-width: 0;               
+  }
+
+  .mainContent__083ae,
+  .established__6e500 {
+    display: none;
+  }
+
+  .avatarContainer_dca174 {
+    margin-top: 0px;
+    padding: 0px;
+    overflow: hidden;
+    min-width: 48px;
+
+    foreignObject {
+      mask: none !important;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    >svg {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  .footer__083ae {
+    width: fit-content;
+    flex-shrink: 0 !important;
+    height: 48px;
+align-content: center;
+    .buttonContainer__083ae {
+      padding: 0px;
+      width: fit-content;
+
+      .button__201d5 {
+        width: auto;
+      }
+    }
+  }
+
+  .header__6e500 {
+    width: max-content !important;
+    padding: 0px;
+    margin: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    .nameContainer__6e500, .members__6e500, .memberCount__6e500{
+      width: 100%!important;
+      flex-wrap: nowrap;
+    }
+
+    [data-text-variant] {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .banner__083ae {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+  }
+}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+
+/* Sidebar cat */
+.user-profile-sidebar::after {
+    /* DIscord's color setup */
+    --profile-gradient-start:  color-mix(in oklab, var(--profile-gradient-overlay-color) 100%, var(--profile-gradient-primary-color));
+    --profile-gradient-end:  color-mix(in oklab, var(--profile-gradient-overlay-color) 100%, var(--profile-gradient-secondary-color));
+    /* The cat */
+    content: 
+   "  ╱|、   \a"
+ "  (˚ˎ 。7  \a"
+  "  |、˜〵\  \a"
+"    じしˍ,)ノ";
+
+    white-space: pre;
+    inset: 0;
+    padding: 20px;
+    color: white;
+    /* Also discords */
+    background: linear-gradient(var(--profile-gradient-start), var(--profile-gradient-start) var(--custom-user-profile-banner-height), var(--profile-gradient-end));
+    text-align: center;
+    font-size: 150%;
+}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+
+.messageContent_c19a55, .compact_c19a55 .contents_c19a55 {
+  position: unset !important;
+}
+.obscured.obscured {
+  --__current--spoiler-content-opacity: 1;
+  &.hidden__299eb > span {
+    visibility: hidden;
+  }
+}
+.mention, .roleMention__75297 {
+  position: unset;
+  filter: none;
+}
+.mentioned__5126c .interactive:is(.roleMention__75297, .mention) {
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    background-color: var(--icon-feedback-warning);
+    filter: saturate(var(--saturation-factor,1));
+    pointer-events: none;
+    visibility: visible;
+  }
+  &[style]:before, &[style]:after {
+    background-color: currentColor !important;
+  }
+}
+.mentioned__5126c .interactive:is(.roleMention__75297, .mention):before {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 2px;
+}
+.mentioned__5126c .interactive:is(.roleMention__75297, .mention):after {
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  inset: 0;
+  opacity: 8%;
+  z-index: -1;
+}
+.interactive:is(.roleMention__75297, .mention) ~ .interactive, .interactive:is(.roleMention__75297, .mention) ~ .obscured .interactive, .obscured:has(.interactive) ~ .interactive, .obscured:has(.interactive) ~ .obscured .interactive, .repliedTextPreview_c19a55 .interactive {
+  &:before, &:after {
+    content: unset;
+  }
+}
+.mentioned__5126c:has(.contents_c19a55 .interactive:is(.roleMention__75297, .mention)) {
+  background: none !important;
+  z-index: 0;
+  &:hover, &.selected__5126c {
+    .mention:after, .roleMention__75297:after {
+      opacity: 4%;
+    }
+  }
+}
